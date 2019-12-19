@@ -15,11 +15,12 @@
     ],
     "parser": "babel-eslint",
     "rules": {
+      "max-len": [1, 120, 2],
       "prettier/prettier": ["error", {
         "singleQuote": true,
         "trailingComma": "es5"
       }],
-      "react-hooks/rules-of-hooks": "warn",
+      "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
       "react/jsx-filename-extension": 0,
       "react/jsx-one-expression-per-line": 0,
