@@ -14,7 +14,7 @@ class Layout extends React.Component {
     const { children } = this.props;
     return (
       <>
-        <Helmet titleTemplate="%s | React App" title="Xtract AI" />
+        <Helmet titleTemplate="%s - React App" title="React App" />
         <MainLayout>{children}</MainLayout>
       </>
     );
