@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import './Login.scss';
 import { AccountType } from '../../constants/ActionTypes';
+import LanguageSwitch from '../../components/LanguageSwitch/LanguageSwitch';
 
 class Login extends React.Component {
   constructor(props) {
@@ -10,7 +12,7 @@ class Login extends React.Component {
   }
 
   login = () => {
-    const { dispatch } = this.props; //eslint-disable-line
+    const { dispatch } = this.props;
     dispatch({
       type: AccountType.LOGIN,
       payload: {
@@ -20,15 +22,24 @@ class Login extends React.Component {
   };
 
   render() {
+    const {
+      persist: { locale },
+    } = this.props;
     return (
       <div className="login-container">
-        <h3>Login Page</h3>
+        <LanguageSwitch />
+        <h3>{locale.loginPage}</h3>
         <button type="button" onClick={this.login}>
-          Login
+          {locale.login}
         </button>
       </div>
     );
   }
 }
 
-export default connect()(Login);
+Login.propTypes = {
+  dispatch: PropTypes.func,
+  persist: PropTypes.shape(),
+};
+
+export default connect(({ persist }) => ({ persist }))(Login);

@@ -2,13 +2,14 @@ import React, { Suspense } from 'react';
 import { Route, Switch, Redirect, BrowserRouter } from 'react-router-dom';
 import routes from './routesMap';
 import Layout from '../layouts';
+import GlobalLoading from '../components/GlobalLoading/GlobalLoading';
 
 class Router extends React.PureComponent {
   render() {
     return (
       <BrowserRouter>
         <Layout>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<GlobalLoading />}>
             <Switch>
               {routes.map(route => (
                 <Route

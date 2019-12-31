@@ -1,0 +1,20 @@
+.languageSwitch {
+  position: relative;
+  display: table;
+  .icon {
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    margin-left: 5px;
+  }
+  .ant-select-selection--single .ant-select-selection__rendered {
+    margin-right: 36px;
+    margin-left: 28px;
+  }
+}

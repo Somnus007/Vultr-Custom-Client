@@ -28,6 +28,7 @@
       "jsx-a11y/no-noninteractive-element-interactions": 0,
       "global-require": 0,
       "no-else-return": 0,
-      "react/require-default-props": 0
+      "react/require-default-props": 0,
+      "camelcase": 0
     }
   }
