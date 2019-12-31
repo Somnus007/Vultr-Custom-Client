@@ -2,8 +2,7 @@ import Immutable from 'seamless-immutable';
 import { CommonType } from '../../constants/ActionTypes';
 
 const initialState = Immutable({
-  //   lang: defaultLang,
-  //   locales: locales[defaultLang],
+  httpErrorStatus: 0,
 });
 
 export default function commonReducer(state = initialState, action) {

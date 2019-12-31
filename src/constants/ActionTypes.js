@@ -6,6 +6,7 @@ export const CommonType = {
 export const AccountType = {
   SET_ACCOUNT_STATE: 'SET_ACCOUNT_STATE',
   LOGIN: 'LOGIN',
+  LOGOUT: 'LOGOUT',
 };
 
 export const HomeType = {

@@ -3,6 +3,8 @@ import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import createSagaMiddleware from 'redux-saga';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { createBrowserHistory } from 'history'; // or use createHashHistory
+import { routerMiddleware } from 'connected-react-router';
 // import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import {
   seamlessImmutableReconciler,
@@ -18,6 +20,11 @@ const middlewares = [];
 const sagaMiddleware = createSagaMiddleware();
 middlewares.push(sagaMiddleware);
 // --- Add saga ---
+
+// --- Add router to redux ---
+export const history = createBrowserHistory(); // or use createHashHistory
+middlewares.push(routerMiddleware(history));
+// --- Add router to redux ---
 
 const middlewareEnhancer = applyMiddleware(...middlewares);
 
@@ -36,7 +43,7 @@ const persistConfig = {
   transforms: [seamlessImmutableTransformCreator({})],
 };
 
-const persistedReducer = persistReducer(persistConfig, rootReducer());
+const persistedReducer = persistReducer(persistConfig, rootReducer(history));
 
 const store = createStore(persistedReducer, composedEnhancers);
 

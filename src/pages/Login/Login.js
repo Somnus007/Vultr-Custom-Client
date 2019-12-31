@@ -1,8 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { notification } from 'antd';
 import PropTypes from 'prop-types';
 import './Login.scss';
-import { AccountType } from '../../constants/ActionTypes';
+import { AccountType, CommonType } from '../../constants/ActionTypes';
 import LanguageSwitch from '../../components/LanguageSwitch/LanguageSwitch';
 
 class Login extends React.Component {
@@ -11,14 +13,44 @@ class Login extends React.Component {
     this.state = {};
   }
 
+  componentDidMount() {
+    this.dispatchErrorNotify();
+  }
+
+  dispatchErrorNotify = () => {
+    const {
+      common: { httpErrorStatus },
+      persist: { locale },
+      dispatch,
+    } = this.props;
+    if (httpErrorStatus) {
+      if (httpErrorStatus === 401) {
+        notification.error({
+          message: locale.authorizationDenied,
+          description: locale.loginFirst,
+        });
+      } else if (httpErrorStatus === 403) {
+        notification.error({
+          message: locale.authorizationExpired,
+          description: locale.loginAgain,
+        });
+      }
+      dispatch({
+        type: CommonType.SET_COMMON_STATE,
+        payload: { httpErrorStatus: 0 },
+      });
+    }
+  };
+
   login = () => {
-    const { dispatch } = this.props;
+    const { dispatch, history } = this.props;
     dispatch({
       type: AccountType.LOGIN,
       payload: {
         info: { userName: 'Allen Song', email: 'somnus.sxy@gmail.com' },
       },
     });
+    history.push('/');
   };
 
   render() {
@@ -40,6 +72,12 @@ class Login extends React.Component {
 Login.propTypes = {
   dispatch: PropTypes.func,
   persist: PropTypes.shape(),
+  common: PropTypes.shape(),
+  history: PropTypes.shape(),
 };
 
-export default connect(({ persist }) => ({ persist }))(Login);
+export default connect(({ persist, router, common }) => ({
+  persist,
+  router,
+  common,
+}))(withRouter(Login));

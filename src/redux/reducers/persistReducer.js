@@ -6,7 +6,7 @@ const defaultLang = 'en-US';
 
 const initialState = Immutable({
   accountInfo: null,
-  auth: false,
+  authorized: false,
   lang: defaultLang,
   locale: locales[defaultLang],
 });

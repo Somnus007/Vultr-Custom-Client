@@ -34,7 +34,7 @@ export default class Index extends PureComponent {
             <p className="mb-3">
               An error may occur inside the server now, please try again later
             </p>
-            <h1 className="font-size-80 mb-4 font-weight-bold">404 —</h1>
+            <h1 className="font-size-80 mb-4 font-weight-bold">500 —</h1>
             <Link to="/" className="btn">
               &larr; Try again
             </Link>
