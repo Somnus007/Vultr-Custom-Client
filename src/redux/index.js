@@ -3,7 +3,7 @@ import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import createSagaMiddleware from 'redux-saga';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { createBrowserHistory } from 'history'; // or use createHashHistory
+import { createHashHistory } from 'history';
 import { routerMiddleware } from 'connected-react-router';
 // import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import {
@@ -22,7 +22,7 @@ middlewares.push(sagaMiddleware);
 // --- Add saga ---
 
 // --- Add router to redux ---
-export const history = createBrowserHistory(); // or use createHashHistory
+export const history = createHashHistory(); // use one of [createBrowserHistory, createHashHistory]
 middlewares.push(routerMiddleware(history));
 // --- Add router to redux ---
 
