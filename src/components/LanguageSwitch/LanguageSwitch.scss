@@ -7,7 +7,7 @@
     position: absolute;
     z-index: 1;
     top: 0;
-    left: 0;
+    left: 6px;
     bottom: 0;
     right: 0;
     margin: auto;
@@ -15,6 +15,6 @@
   }
   .ant-select-selection--single .ant-select-selection__rendered {
     margin-right: 36px;
-    margin-left: 28px;
+    margin-left: 32px;
   }
 }

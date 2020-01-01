@@ -6,6 +6,7 @@ import { Helmet } from 'react-helmet';
 import BlankLayout from './BlankLayout';
 import MainLayout from './MainLayout';
 import { CommonType } from '../constants/ActionTypes';
+import LanguageSwitch from '../components/LanguageSwitch/LanguageSwitch';
 
 class Layout extends React.Component {
   constructor(props) {
@@ -76,7 +77,7 @@ class Layout extends React.Component {
     });
   };
 
-  setLayout = () => {
+  setupLayout = () => {
     const {
       persist: { authorized },
       children,
@@ -91,8 +92,14 @@ class Layout extends React.Component {
   render() {
     return (
       <>
-        <Helmet titleTemplate="%s - React App" title="React App" />
-        {this.setLayout()}
+        <Helmet
+          titleTemplate="%s - Customized Vultr"
+          title="Customized Vultr"
+        />
+        <div style={{ position: 'fixed', top: 16, right: 48, zIndex: 99 }}>
+          <LanguageSwitch />
+        </div>
+        {this.setupLayout()}
       </>
     );
   }

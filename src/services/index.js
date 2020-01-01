@@ -2,17 +2,40 @@ import axios from 'axios';
 import redux from '../redux';
 import { AccountType, CommonType } from '../constants/ActionTypes';
 
-const defaultOptions = () => ({
-  headers: {
-    Authorization: `Bearer faketoken`,
-  },
-  timeout: 0,
-});
+const defaultOptions = () => {
+  const { store } = redux;
+  const states = store.getState();
+  const {
+    persist: { accountInfo },
+  } = states;
+  const apiKey = accountInfo ? accountInfo.apiKey : '';
+  return {
+    headers: {
+      'API-Key': apiKey,
+    },
+    timeout: 6000,
+  };
+};
 
 // Add a request interceptor
 axios.interceptors.request.use(
   config => {
     // Do something before request is sent
+    const { store } = redux;
+    const states = store.getState();
+    const {
+      persist: { authorizedDate },
+    } = states;
+    if (
+      authorizedDate &&
+      (new Date().getTime() - authorizedDate) / 1000 / 60 / 60 > 8 // 8 hour
+    ) {
+      const error = {
+        response: { status: 403 },
+        data: { message: 'Authorization Expired' },
+      };
+      return Promise.reject(error);
+    }
     return config;
   },
   error => {
@@ -31,8 +54,8 @@ axios.interceptors.response.use(
   error => {
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
-    const { store } = redux;
     const { response } = error;
+    const { store } = redux;
     const status = response ? response.status : -1;
     switch (true) {
       case status === 401:

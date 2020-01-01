@@ -1,5 +1,5 @@
 {
-  "name": "cra-app",
+  "name": "vultr-custom-client",
   "version": "0.1.0",
   "private": true,
   "homepage": "https://somnus007.github.io/Vultr-Custom-Client/",
@@ -90,5 +90,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "https://api.vultr.com"
 }
