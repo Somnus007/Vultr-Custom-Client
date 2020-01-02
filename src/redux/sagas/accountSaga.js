@@ -14,7 +14,7 @@ export function* login(action) {
       },
     });
   } catch (err) {
-    console.log(err); //eslint-disable-line
+    console.log(err && err.response); //eslint-disable-line
   }
   if (res.email === email) {
     const authorizedDate = new Date().getTime();
