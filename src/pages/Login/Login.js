@@ -79,7 +79,7 @@ class Login extends React.Component {
         <div className="login-center">
           <h2>Welcome To Customized Vultr Portal</h2>
           <h3>
-            Easily deploy cloud servers, bare metal, and storage worldwide!
+            Easily deploy cloud servers, bare metal, and storage worldwide
           </h3>
           <Form
             onSubmit={this.handleLogin}
