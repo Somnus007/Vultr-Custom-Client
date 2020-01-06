@@ -71,7 +71,10 @@ class Login extends React.Component {
         <Helmet title="Login" />
         <div className="header-placeholder">
           <div className="login-header">
-            <a className="logo" href="/">
+            <a
+              className="logo"
+              href="https://somnus007.github.io/Vultr-Custom-Client/"
+            >
               <img width={48} alt="logo" src={logo} />
             </a>
           </div>
