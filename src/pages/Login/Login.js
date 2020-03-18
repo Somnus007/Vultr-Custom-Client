@@ -71,10 +71,7 @@ class Login extends React.Component {
         <Helmet title="Login" />
         <div className="header-placeholder">
           <div className="login-header">
-            <a
-              className="logo"
-              href="https://somnus007.github.io/Vultr-Custom-Client/"
-            >
+            <a className="logo" href="https://somnus007.github.io/cra-pwa/">
               <img width={48} alt="logo" src={logo} />
             </a>
           </div>
@@ -149,10 +146,7 @@ class Login extends React.Component {
             <a target="__blank" href="https://www.vultr.com/?ref=8353553-4F">
               Vultr
             </a>
-            <a
-              target="__blank"
-              href="https://github.com/Somnus007/Vultr-Custom-Client"
-            >
+            <a target="__blank" href="https://github.com/Somnus007/cra-pwa">
               <Icon type="github" />
             </a>
             <a target="__blank" href="https://ant.design/docs/react/introduce">
