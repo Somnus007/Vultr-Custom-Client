@@ -1,3 +1,5 @@
+**This is a PWA demo, here is the [link](https://somnus007.github.io/cra-pwa/)**
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
