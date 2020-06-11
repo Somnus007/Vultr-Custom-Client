@@ -45,6 +45,11 @@ class Login extends React.Component {
   };
 
   handleLogin = event => {
+    const now = new Date().getTime();
+    window.MtaH5.clickStat('allentestid', {
+      uuid: now,
+      phone: `18888888888(${now})`,
+    });
     const e = event || window.event;
     e.preventDefault();
     const { form, dispatch, history } = this.props;
